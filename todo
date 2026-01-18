@@ -1,0 +1,127 @@
+Navigateur (client)
+        |
+        | HTTP
+        v
+Java HTTP Server (port 8080)
+        |
+        | commandes système
+        v
+Serveur Ubuntu + BIND9
+
+
+PHASE 1 — Préparation de l’environnement
+
+☐ Installer Ubuntu Server / Desktop
+☐ Mettre le système à jour
+
+sudo apt update && sudo apt upgrade
+
+
+☐ Installer BIND9
+
+sudo apt install bind9 bind9utils
+
+
+☐ Vérifier que BIND9 fonctionne
+
+systemctl status bind9
+
+
+☐ Créer au moins une zone DNS locale valide
+☐ Tester la résolution DNS avec dig
+
+PHASE 2 — Validation réseau
+
+☐ Identifier l’IP réelle du serveur (ip a)
+☐ Vérifier la connectivité réseau (ping)
+☐ Vérifier que le port 53 (DNS) fonctionne
+☐ Vérifier que le port 8080 est libre
+
+PHASE 3 — Base du projet Java
+
+☐ Créer un dossier projet Java
+☐ Créer les classes principales :
+
+DnsWebServer
+
+CommandExecutor
+
+ZoneManager
+
+☐ Tester l’exécution de commandes Linux via Java
+☐ Tester systemctl is-active bind9 depuis Java
+
+PHASE 4 — Serveur Web Java (fondation)
+
+☐ Créer un serveur HTTP Java (port 8080)
+☐ Afficher une page HTML minimale
+☐ Tester via navigateur :
+
+http://localhost:8080
+http://IP_SERVEUR:8080
+
+
+☐ Vérifier que le port 8080 écoute (ss -tulpn)
+
+PHASE 5 — Supervision du serveur DNS
+
+☐ Vérifier l’état de BIND9 depuis Java
+☐ Convertir l’état en :
+
+🟢 SERVEUR ALLUMÉ
+
+🔴 SERVEUR ÉTEINT
+
+☐ Afficher l’état dans la page HTML
+☐ Gérer les erreurs (BIND non installé / service arrêté)
+
+PHASE 6 — Gestion des domaines DNS
+
+☐ Lire /etc/bind/named.conf.local
+☐ Extraire les zones DNS
+☐ Afficher les domaines dans la page Web
+☐ Gérer le cas “aucune zone trouvée”
+
+PHASE 7 — Interface HTML propre
+
+☐ Structurer la page HTML
+☐ Ajouter du CSS simple :
+
+couleurs
+
+blocs
+
+titres
+
+☐ Rendre la page lisible pour un non-technique
+☐ Ajouter date / heure de rafraîchissement
+
+PHASE 8 — Sécurité et accès client
+
+☐ Autoriser le port 8080 (ufw)
+☐ Tester l’accès depuis un autre PC du réseau
+☐ Vérifier que le site est en lecture seule
+☐ Tester sans droits root (voir limites)
+
+PHASE 9 — Tests et validation
+
+☐ Arrêter BIND9 → vérifier affichage OFF
+☐ Démarrer BIND9 → vérifier affichage ON
+☐ Ajouter une zone DNS → vérifier affichage
+☐ Tester sur plusieurs navigateurs
+
+PHASE 10 — Documentation (important pour projet)
+
+☐ Expliquer BIND9 (rôle, fonctionnement)
+☐ Expliquer l’architecture Java
+☐ Décrire le flux Client → Serveur → BIND
+☐ Ajouter captures d’écran
+☐ Expliquer les choix techniques
+
+PHASE 11 — Améliorations (optionnel mais valorisant)
+
+☐ Bouton ON / OFF BIND9
+☐ Rafraîchissement automatique
+☐ Page /status JSON
+☐ Authentification basique
+☐ Supervision d’autres services (Apache, MySQL)
