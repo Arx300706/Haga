@@ -2,7 +2,6 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 public class CommandExecutor {
-
     public static String execute(String command) {
         StringBuilder result = new StringBuilder();
         try {
@@ -13,6 +12,7 @@ public class CommandExecutor {
             while ((line = reader.readLine()) != null) {
                 result.append(line).append("\n");
             }
+            process.waitFor(); // Attendre la fin du processus
         } catch (Exception e) {
             return "Erreur : " + e.getMessage();
         }

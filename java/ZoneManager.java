@@ -2,12 +2,9 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 
 public class ZoneManager {
-
     public static String getZones() {
         StringBuilder zones = new StringBuilder();
-        try (BufferedReader br =
-                     new BufferedReader(new FileReader("/etc/bind/named.conf.local"))) {
-
+        try (BufferedReader br = new BufferedReader(new FileReader("/etc/bind/named.conf.local"))) {
             String line;
             while ((line = br.readLine()) != null) {
                 if (line.trim().startsWith("zone")) {
@@ -15,7 +12,7 @@ public class ZoneManager {
                 }
             }
         } catch (Exception e) {
-            return "Impossible de lire les zones DNS";
+            return "Impossible de lire les zones DNS : " + e.getMessage();
         }
         return zones.toString();
     }

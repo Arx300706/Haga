@@ -1,0 +1,2 @@
+Armando|Armandonandrasana@gmail.com|0385324196|IT|300706|2026-01-21 18:15:59||
+Test User|test@example.com|+33612345678|Test Corp|password123|2026-01-21 18:18:09||

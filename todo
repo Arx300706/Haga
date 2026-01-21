@@ -125,3 +125,7 @@ PHASE 11 — Améliorations (optionnel mais valorisant)
 ☐ Page /status JSON
 ☐ Authentification basique
 ☐ Supervision d’autres services (Apache, MySQL)
+
+sudo java DnsWebServer
+
+sudo nano /usr/local/bin/add_dns_zone.
